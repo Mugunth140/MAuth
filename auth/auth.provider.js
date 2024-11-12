@@ -1,12 +1,16 @@
 const jwt = require('jsonwebtoken');
 
 class AuthProvider {
-  async authenticate(token) {
+  static async authenticate(token) {
     try {
-      const decoded = jwt.verify(token, process.env.SECRET_KEY);
+      const decoded = jwt.verify(token, process.env.SECRET_KEY, {
+        algorithms: ['HS256'],
+        ignoreExpiration: false,
+      });
       return decoded.userId;
     } catch (error) {
-      return null;
+      console.error('Authentication error:', error);
+      throw new Error('Invalid token');
     }
   }
 }

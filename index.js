@@ -1,3 +1,3 @@
-const MAuth = require('./auth');
+const MAuth = require('./MAuth');
 
 module.exports = MAuth;

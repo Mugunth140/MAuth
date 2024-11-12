@@ -1,10 +1,10 @@
 {
   "name": "mauth",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "dev": "nodemon app.js"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -14,8 +14,8 @@
     "mongoose": "^6.2.1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Mugunth140",
+  "license": "GNU",
   "description": "",
   "devDependencies": {
     "nodemon": "^3.1.7"
