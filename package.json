@@ -1,5 +1,5 @@
 {
-  "name": "mauth",
+  "name": "@mugunth/m-auth",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
@@ -13,10 +13,16 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.2.1"
   },
-  "keywords": [],
+  "keywords": [
+    "authentication",
+    "node.js",
+    "express",
+    "jwt",
+    "security"
+  ],
   "author": "Mugunth140",
   "license": "GNU",
-  "description": "",
+  "description": "A secure authentication system built with Node.js, Express, and JSON Web Tokens (JWT)",
   "devDependencies": {
     "nodemon": "^3.1.7"
   }
