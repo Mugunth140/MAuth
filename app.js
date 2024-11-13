@@ -2,8 +2,10 @@ const express = require('express');
 const app = express();
 const authRoutes = require('./routes/auth.routes');
 const mongoose = require('./config/database');
-const MAuth = require("./index")
+const MAuth = require("./MAuth")
 const mauth = new MAuth();
+
+//console.log(mauth)
 
 app.use(express.json());
 app.use('/api/auth', authRoutes);
