@@ -45,7 +45,7 @@ This authentication system provides a secure way to manage user registration, lo
 
 5. **Start the server:**
    ```bash
-   npm start
+   npm run dev
    ```
 
 ## API Endpoints
