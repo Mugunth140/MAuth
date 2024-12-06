@@ -34,6 +34,18 @@ class MAuth {
     }
   }
 
+  async forgotPassword(email) {
+    try {
+      if (!email) {
+        throw new Error('Invalid email');
+      }
+      return this.authService.forgot(user);
+    } catch (error) {
+      console.error('forgot password error:', error);
+      throw error;
+    }
+  }
+
   async authenticate(token) {
     try {
       if (!token) {

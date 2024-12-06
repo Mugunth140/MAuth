@@ -18,6 +18,10 @@ router.post('/login', async (req, res) => {
   res.send({ token });
 });
 
+router.post("/forgotpassword", async (req, res) => {
+  const user = req.body
+});
+
 router.get('/protected', authGuard.protectRoute, (req, res) => {
   res.send(`Hello, ${req.userId}!`);
 });

@@ -51,7 +51,7 @@ This authentication system provides a secure way to manage user registration, lo
 ## API Endpoints
 
 ### User Registration
-- **URL**: `/api/auth/register`
+- **URL**: `/mauth/register`
 - **Method**: `POST`
 - **Request Body**: 
   ```json
@@ -72,7 +72,7 @@ This authentication system provides a secure way to manage user registration, lo
   ```
 
 ### User Login
-- **URL**: `/api/auth/login`
+- **URL**: `/mauth/login`
 - **Method**: `POST`
 - **Request Body**:
   ```json
@@ -89,7 +89,7 @@ This authentication system provides a secure way to manage user registration, lo
   ```
 
 ### Protected Route
-- **URL**: `/api/protected`
+- **URL**: `/mauth/protected`
 - **Method**: `GET`
 - **Request Header**:
   - `Authorization: Bearer <token>`

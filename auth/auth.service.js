@@ -23,6 +23,14 @@ class AuthService {
     });
     return token;
   }
+
+  async forgot(email){
+    const emailExists = await User.findOne({ email: email });
+    if(!emailExists){
+      throw new Error("Invalid Email")
+    }
+    
+  }
 }
 
 module.exports = AuthService;
