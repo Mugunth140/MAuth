@@ -39,7 +39,7 @@ This authentication system provides a secure way to manage user registration, lo
 4. **Set environment variables:**
    Copy the example environment file:
    ```bash
-   cp .env.example .env
+   cp .env.development.local.example .env.development.local
    ```
    Update the `.env` file with your configuration (e.g., JWT secret, database URL).
 
