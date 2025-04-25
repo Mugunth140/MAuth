@@ -1,0 +1,1 @@
+export { setupMAuth } from './core';

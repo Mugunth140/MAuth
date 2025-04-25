@@ -1,38 +1,40 @@
 {
-  "name": "@mugunth/m-auth",
-  "version": "1.0.1",
-  "main": "src/app.js",
+  "name": "mauth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/app.js",
-    "dev": "nodemon src/app.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "authentication",
-    "node.js",
-    "express",
-    "jwt",
-    "security"
-  ],
-  "author": "Mugunth140",
-  "license": "GNU",
-  "description": "A secure authentication system built with Node.js, Express, and JSON Web Tokens (JWT)",
-  "devDependencies": {
-    "nodemon": "^3.1.9"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mugunth140/MAuth.git"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Mugunth140/MAuth/issues"
+  },
+  "homepage": "https://github.com/Mugunth140/MAuth#readme",
   "dependencies": {
-    "bcryptjs": "^3.0.0",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2",
-    "express-rate-limit": "^6.7.0",
-    "express-session": "^1.18.1",
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "express-rate-limit": "^7.5.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.10.1",
-    "nodemailer": "^6.10.0",
-    "passport": "^0.7.0",
-    "passport-google-oauth20": "^2.0.0",
-    "speakeasy": "^2.0.0",
-    "winston": "^3.8.2"
+    "mongoose": "^8.13.3",
+    "nodemailer": "^6.10.1",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^5.0.1",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/mongoose": "^5.11.96",
+    "@types/node": "^22.15.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   }
 }
