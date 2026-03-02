@@ -1,40 +1,75 @@
 {
-  "name": "mauth",
+  "name": "@mugunth140/mauth",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Universal authentication library for Node.js, Bun, Deno, and edge runtimes. JWT, sessions, OAuth, TOTP, API keys, magic links, and more.",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
+      "require": { "types": "./dist/index.d.cts", "default": "./dist/index.cjs" }
+    },
+    "./jwt": {
+      "import": { "types": "./dist/jwt.d.ts", "default": "./dist/jwt.js" },
+      "require": { "types": "./dist/jwt.d.cts", "default": "./dist/jwt.cjs" }
+    },
+    "./oauth": {
+      "import": { "types": "./dist/oauth.d.ts", "default": "./dist/oauth.js" },
+      "require": { "types": "./dist/oauth.d.cts", "default": "./dist/oauth.cjs" }
+    },
+    "./session": {
+      "import": { "types": "./dist/session.d.ts", "default": "./dist/session.js" },
+      "require": { "types": "./dist/session.d.cts", "default": "./dist/session.cjs" }
+    },
+    "./password": {
+      "import": { "types": "./dist/password.d.ts", "default": "./dist/password.js" },
+      "require": { "types": "./dist/password.d.cts", "default": "./dist/password.cjs" }
+    },
+    "./totp": {
+      "import": { "types": "./dist/totp.d.ts", "default": "./dist/totp.js" },
+      "require": { "types": "./dist/totp.d.cts", "default": "./dist/totp.cjs" }
+    },
+    "./csrf": {
+      "import": { "types": "./dist/csrf.d.ts", "default": "./dist/csrf.js" },
+      "require": { "types": "./dist/csrf.d.cts", "default": "./dist/csrf.cjs" }
+    },
+    "./api-key": {
+      "import": { "types": "./dist/api-key.d.ts", "default": "./dist/api-key.js" },
+      "require": { "types": "./dist/api-key.d.cts", "default": "./dist/api-key.cjs" }
+    },
+    "./magic-link": {
+      "import": { "types": "./dist/magic-link.d.ts", "default": "./dist/magic-link.js" },
+      "require": { "types": "./dist/magic-link.d.cts", "default": "./dist/magic-link.cjs" }
+    },
+    "./rate-limit": {
+      "import": { "types": "./dist/rate-limit.d.ts", "default": "./dist/rate-limit.js" },
+      "require": { "types": "./dist/rate-limit.d.cts", "default": "./dist/rate-limit.cjs" }
+    },
+    "./middleware": {
+      "import": { "types": "./dist/middleware.d.ts", "default": "./dist/middleware.js" },
+      "require": { "types": "./dist/middleware.d.cts", "default": "./dist/middleware.cjs" }
+    }
+  },
+  "files": ["dist", "README.md", "LICENSE"],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Mugunth140/MAuth.git"
-  },
-  "keywords": [],
+  "keywords": [
+    "auth", "authentication", "jwt", "oauth", "session", "totp", "2fa",
+    "csrf", "api-key", "magic-link", "password", "hashing", "middleware",
+    "bun", "deno", "edge", "web-crypto", "typescript"
+  ],
   "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/Mugunth140/MAuth/issues"
-  },
-  "homepage": "https://github.com/Mugunth140/MAuth#readme",
-  "dependencies": {
-    "bcrypt": "^5.1.1",
-    "dotenv": "^16.5.0",
-    "express": "^5.1.0",
-    "express-rate-limit": "^7.5.0",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.13.3",
-    "nodemailer": "^6.10.1",
-    "uuid": "^11.1.0"
-  },
+  "license": "MIT",
+  "engines": { "node": ">=18.0.0" },
   "devDependencies": {
-    "@types/bcrypt": "^5.0.2",
-    "@types/express": "^5.0.1",
-    "@types/jsonwebtoken": "^9.0.9",
-    "@types/mongoose": "^5.11.96",
-    "@types/node": "^22.15.2",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.3"
+    "@types/node": "^25.3.2",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
   }
 }
