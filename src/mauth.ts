@@ -26,7 +26,7 @@ import { MAuthError } from "./types";
  *
  * @example
  * ```ts
- * import { MAuth } from "mauth-js";
+ * import { MAuth } from "@mugunth140/mauth";
  *
  * const auth = new MAuth({ secret: "your-secret-key" });
  *

@@ -25,23 +25,23 @@ Built on **Web Crypto API** for maximum cross-runtime compatibility.
 
 ```bash
 # npm
-npm install mauth-js
+npm install @mugunth140/mauth
 
 # bun
-bun add mauth-js
+bun add @mugunth140/mauth
 
 # deno
-deno add npm:mauth-js
+deno add npm:@mugunth140/mauth
 
 # pnpm / yarn
-pnpm add mauth-js
-yarn add mauth-js
+pnpm add @mugunth140/mauth
+yarn add @mugunth140/mauth
 ```
 
 ## Quick Start
 
 ```typescript
-import { MAuth } from "mauth-js";
+import { MAuth } from "@mugunth140/mauth";
 
 const auth = new MAuth({
   secret: process.env.AUTH_SECRET!,
@@ -73,16 +73,16 @@ const isValid = await auth.totp.verify(code, secret.base32);
 Import only what you need for smaller bundles:
 
 ```typescript
-import { JWT } from "mauth-js/jwt";
-import { Password } from "mauth-js/password";
-import { SessionManager } from "mauth-js/session";
-import { TOTP } from "mauth-js/totp";
-import { CSRF } from "mauth-js/csrf";
-import { APIKey } from "mauth-js/api-key";
-import { MagicLink } from "mauth-js/magic-link";
-import { RateLimiter } from "mauth-js/rate-limit";
-import { OAuthManager } from "mauth-js/oauth";
-import { createAuthMiddleware } from "mauth-js/middleware";
+import { JWT } from "@mugunth140/mauth/jwt";
+import { Password } from "@mugunth140/mauth/password";
+import { SessionManager } from "@mugunth140/mauth/session";
+import { TOTP } from "@mugunth140/mauth/totp";
+import { CSRF } from "@mugunth140/mauth/csrf";
+import { APIKey } from "@mugunth140/mauth/api-key";
+import { MagicLink } from "@mugunth140/mauth/magic-link";
+import { RateLimiter } from "@mugunth140/mauth/rate-limit";
+import { OAuthManager } from "@mugunth140/mauth/oauth";
+import { createAuthMiddleware } from "@mugunth140/mauth/middleware";
 ```
 
 ---
@@ -90,7 +90,7 @@ import { createAuthMiddleware } from "mauth-js/middleware";
 ## JWT
 
 ```typescript
-import { JWT } from "mauth-js/jwt";
+import { JWT } from "@mugunth140/mauth/jwt";
 
 const jwt = new JWT({
   secret: "your-secret-key",
@@ -117,7 +117,7 @@ const decoded = jwt.decode(token);
 ### Access + Refresh Token Pairs
 
 ```typescript
-import { JWTTokenPairManager } from "mauth-js/jwt";
+import { JWTTokenPairManager } from "@mugunth140/mauth/jwt";
 
 const tokens = new JWTTokenPairManager({
   access: { secret: "secret", expiresIn: "15m" },
@@ -139,7 +139,7 @@ const newTokens = await tokens.refresh(refreshToken);
 ## Password Hashing
 
 ```typescript
-import { Password } from "mauth-js/password";
+import { Password } from "@mugunth140/mauth/password";
 
 const password = new Password({
   algorithm: "pbkdf2",   // Uses Web Crypto PBKDF2
@@ -165,7 +165,7 @@ if (password.needsRehash(hash)) {
 ## Sessions
 
 ```typescript
-import { SessionManager, MemoryStore } from "mauth-js/session";
+import { SessionManager, MemoryStore } from "@mugunth140/mauth/session";
 
 const sessions = new SessionManager({
   maxAge: 86400,          // 24 hours
@@ -198,7 +198,7 @@ const sessionId = sessions.getSessionIdFromCookie(request.headers.get("cookie"))
 ### Custom Session Store
 
 ```typescript
-import type { SessionStore, Session } from "mauth-js/session";
+import type { SessionStore, Session } from "@mugunth140/mauth/session";
 
 class RedisStore implements SessionStore {
   async get(id: string): Promise<Session | null> { /* redis.get */ }
@@ -215,7 +215,7 @@ const sessions = new SessionManager({ store: new RedisStore() });
 ## OAuth 2.0
 
 ```typescript
-import { OAuthManager } from "mauth-js/oauth";
+import { OAuthManager } from "@mugunth140/mauth/oauth";
 
 const oauth = new OAuthManager();
 
@@ -268,7 +268,7 @@ oauth.custom("gitlab", {
 ## TOTP (2FA)
 
 ```typescript
-import { TOTP } from "mauth-js/totp";
+import { TOTP } from "@mugunth140/mauth/totp";
 
 const totp = new TOTP({
   issuer: "MyApp",
@@ -295,7 +295,7 @@ const valid = await totp.verify(userCode, secret.base32);
 ## API Keys
 
 ```typescript
-import { APIKey } from "mauth-js/api-key";
+import { APIKey } from "@mugunth140/mauth/api-key";
 
 const apiKey = new APIKey({
   prefix: "mk",         // Key prefix: mk_a1b2c3d4...
@@ -320,7 +320,7 @@ const keyHash = await apiKey.hashKey(userProvidedKey);
 ## Magic Links
 
 ```typescript
-import { MagicLink } from "mauth-js/magic-link";
+import { MagicLink } from "@mugunth140/mauth/magic-link";
 
 const magicLink = new MagicLink({
   secret: "your-secret",
@@ -342,7 +342,7 @@ const { valid, email, metadata } = await magicLink.verify(token);
 ## CSRF Protection
 
 ```typescript
-import { CSRF } from "mauth-js/csrf";
+import { CSRF } from "@mugunth140/mauth/csrf";
 
 const csrf = new CSRF({
   secret: "your-secret",
@@ -364,7 +364,7 @@ const { cookie, header } = await csrf.createDoubleSubmit();
 ## Rate Limiting
 
 ```typescript
-import { RateLimiter } from "mauth-js/rate-limit";
+import { RateLimiter } from "@mugunth140/mauth/rate-limit";
 
 const limiter = new RateLimiter({
   max: 100,             // 100 requests
@@ -390,7 +390,7 @@ const headers = limiter.getHeaders(result);
 Framework-agnostic middleware using Web Standard `Request`/`Response`:
 
 ```typescript
-import { createAuthMiddleware, protect } from "mauth-js/middleware";
+import { createAuthMiddleware, protect } from "@mugunth140/mauth/middleware";
 
 // JWT middleware
 const jwtAuth = createAuthMiddleware({
@@ -420,7 +420,7 @@ const protectedHandler = protect(
 ### Multi-auth
 
 ```typescript
-import { createMultiAuthMiddleware } from "mauth-js/middleware";
+import { createMultiAuthMiddleware } from "@mugunth140/mauth/middleware";
 
 const auth = createMultiAuthMiddleware([
   { type: "jwt", jwt: { secret: "secret" } },
@@ -436,7 +436,7 @@ const auth = createMultiAuthMiddleware([
 
 ```typescript
 import { Hono } from "hono";
-import { MAuth } from "mauth-js";
+import { MAuth } from "@mugunth140/mauth";
 
 const auth = new MAuth({ secret: process.env.AUTH_SECRET! });
 const app = new Hono();
@@ -460,7 +460,7 @@ app.get("/protected", async (c) => {
 
 ```typescript
 import express from "express";
-import { MAuth } from "mauth-js";
+import { MAuth } from "@mugunth140/mauth";
 
 const auth = new MAuth({ secret: process.env.AUTH_SECRET! });
 const app = express();
@@ -476,7 +476,7 @@ app.post("/login", async (req, res) => {
 ### Bun
 
 ```typescript
-import { MAuth } from "mauth-js";
+import { MAuth } from "@mugunth140/mauth";
 
 const auth = new MAuth({ secret: Bun.env.AUTH_SECRET! });
 
@@ -499,7 +499,7 @@ Bun.serve({
 ### Deno
 
 ```typescript
-import { MAuth } from "npm:mauth-js";
+import { MAuth } from "npm:@mugunth140/mauth";
 
 const auth = new MAuth({ secret: Deno.env.get("AUTH_SECRET")! });
 
@@ -525,7 +525,7 @@ import {
   pbkdf2,
   timingSafeEqual,
   parseDuration, now,
-} from "mauth-js";
+} from "@mugunth140/mauth";
 ```
 
 ---

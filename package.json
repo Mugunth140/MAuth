@@ -1,6 +1,6 @@
 {
   "name": "@mugunth140/mauth",
-  "version": "1.0.0",
+  "version": "3.0.1",
   "description": "Universal authentication library for Node.js, Bun, Deno, and edge runtimes. JWT, sessions, OAuth, TOTP, API keys, magic links, and more.",
   "type": "module",
   "main": "./dist/index.cjs",
